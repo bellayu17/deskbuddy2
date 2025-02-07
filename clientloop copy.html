@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeskBuddy- AI Agent for Communication</title>
+    <link rel="stylesheet" href="clientloop.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+ .hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+}
+
+.hero-content {
+    width: 55%; /* Increased width for longer text */
+    max-width: 700px; /* Allows more content */
+    padding-right: 2rem;
+}
+
+.hero-content h1 {
+    font-size: 2.5rem;
+    line-height: 1.3;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-top: 1rem;
+}
+
+.hero-video {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 45%; /* Adjusts the video to take less space */
+    max-width: 600px;
+}
+
+.hero-video video {
+    width: 100%; /* Ensures video scales well */
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.partners {
+    padding: 4rem 2rem;
+    background: #f0f9ff;
+    text-align: center;
+    overflow: hidden;
+}
+
+.partners h2 {
+    margin-bottom: 2rem;
+}
+
+.partners-container {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap; /* Prevents scrolling and ensures proper alignment */
+    justify-content: center;
+    align-items: center;
+}
+
+.partner-logo,
+.partner-logo1 {
+    max-width: 150px; /* Prevents stretching */
+    height: auto; /* Maintains aspect ratio */
+    object-fit: contain; /* Ensures image fits without distortion */
+}
+
+        .demo-section {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: #f7f7f7;
+        }
+        .demo-section h2 {
+            margin-bottom: 1rem;
+        }
+        .demo-form {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .demo-form input {
+            padding: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 70%;
+        }
+        .demo-form button {
+            padding: 0.8rem 1.2rem;
+            border: none;
+            border-radius: 4px;
+            background: #64d68a;
+            color: #fff;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        .demo-form button:hover {
+            background: #4daf6e;
+        }
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+            .hero p {
+                font-size: 0.9rem;
+            }
+            .hero-video video {
+                max-width: 100%;
+                height: auto;
+                display: block;
+                margin-top: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">DeskBuddy</div>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="cta-buttons">
+                <a href="login.html" class="btn-secondary">Login</a>
+                <a href="login.html" class="btn-primary">Get Started</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Boost your internal & external communications with us</h1>
+            <p>AI Agent streamlines unread messages--auto-draft & auto-sync follow-up communications across platforms.</p>
+        </div>
+        <div class="hero-video">
+            <video controls autoplay muted loop>
+                <source src="flowsync2.mp4" type="video/mp4">
+            </video>
+        </div>
+    </section>
+
+    <section class="demo-section">
+        <h2>Want a Demo?</h2>
+        <p>Enter your email to schedule a free demo.</p>
+        <form class="demo-form" id="demo-form">
+            <input type="email" id="email" placeholder="Enter your email" required>
+            <button type="submit">Request Demo</button>
+        </form>
+    </section>
+
+    <script>
+        document.getElementById("demo-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const email = document.getElementById("email").value;
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbyPxKb5c3Oi8Ntr9YC2gBuVg_CvEv2jvIwbQmE6qC6PuzCrfBqfgpL09M-Hg_qnoQeOlA/exec';
+            
+            fetch(scriptURL, {
+                method: 'POST',
+                body: new URLSearchParams({"email": email})
+            })
+            .then(response => alert("Thank you! Your request has been submitted."))
+            .catch(error => console.error("Error!", error.message));
+        });
+    </script>
+    <section class="partners">
+        <h2>Our Partners & Clients</h2>
+        <div class="partners-container">
+            <img src="fox.png" alt="Partner 1" class="partner-logo">
+            <img src="salesforce.png" alt="Partner 2" class="partner-logo">
+            <img src="github.png" alt="Partner 3" class="partner-logo1">
+            <img src="google.png" alt="Partner 4" class="partner-logo">
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <h2>Features</h2>
+        <div class="features-container">
+            <div class="feature" data-aos="fade-up">
+                <h3>Streamline Workflow</h3>
+                <p>Seamlessly summarize, auto-draft reply, auto-send reply, auto-schedule meetings.</p>
+            </div>
+            <div class="feature" data-aos="fade-up">
+                <h3>Multi-Channel Auto-Sync</h3>
+                <p>No need to switch between platforms like Slack, Google Suites, Calendars, Emails. We ensure info is synced all over.</p>
+            </div>
+            <div class="feature" data-aos="fade-up">
+                <h3>Smart Scheduling</h3>
+                <p>Keep your teams/ stakeholders/ clients always up-to-date, auto schedule or follow-up based on meetings.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-works" class="how-it-works">
+        <h2>How It Works</h2>
+        <p>Discover how DeskBuddy ensures infosec as our first priority.</p>
+        <div class="steps-container">
+            <div class="step">
+                <span class="step-number">1</span>
+                <p>Authenticate you using IAM to keep your info safe.</p>
+            </div>
+            <div class="step">
+                <span class="step-number">2</span>
+                <p>All data transfers were enhanced with adversarial noise to prevent MIM attacks.</p>
+            </div>
+            <div class="step">
+                <span class="step-number">3</span>
+                <p>The AI model has the no-training module enabled, ensuring it does not learn from your data.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="pricing">
+        <h2>Pricing</h2>
+        <div class="pricing-plans">
+            <div class="plan">
+                <h3>Basic</h3>
+                <p>$12/month</p>
+                <ul>
+                    <li>Limited Usage</li>
+                    <li>Basic functionalities</li>
+                </ul>
+                <a href="login.html" class="btn-primary">Get Started</a>
+            </div>
+            <div class="plan">
+                <h3>Premium</h3>
+                <p>$38/month</p>
+                <ul>
+                    <li>All Basic features</li>
+                    <li>Advanced multi-channel auto-sync</li>
+                    <li>Priority support</li>
+                </ul>
+                <a href="login.html" class="btn-primary">Subscribe Now</a>
+            </div>
+            <div class="plan">
+                <h3>Enterprise</h3>
+                <p>$$$</p>
+                <ul>
+                    <li>All Basic features</li>
+                    <li>All Premium features</li>
+                    <li>Unlimited Usage</li>
+                </ul>
+                <a href="login.html" class="btn-primary">Subscribe Now</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2024 DeskBuddy. All rights reserved.</p>
+        <ul class="footer-links">
+            <li><a href="#privacy">Privacy Policy</a></li>
+            <li><a href="#terms">Terms of Service</a></li>
+        </ul>
+    </footer>
+</body>
+</html>
