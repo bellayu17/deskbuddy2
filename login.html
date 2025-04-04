@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clientloop - Login / Sign Up</title>
+    <title>Login / Sign Up</title>
     <link rel="stylesheet" href="clientloop.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -13,91 +13,104 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: #f9f9f9;
+            margin: 0;
+            background: linear-gradient(135deg, #e0fdf4 0%, #f9f9f9 100%);
         }
+    
         .container {
             background: #ffffff;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            padding: 3rem 2rem;
+            border-radius: 16px;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
             width: 100%;
-            max-width: 400px;
+            max-width: 420px;
             text-align: center;
+            animation: fadeIn 0.8s ease;
         }
+    
         .container h2 {
             margin-bottom: 1.5rem;
-            color: #333;
+            color: #065f46;
+            font-size: 1.8rem;
         }
+    
         .input-group {
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             text-align: left;
         }
+    
         .input-group label {
             display: block;
             margin-bottom: 0.5rem;
-            color: #555;
+            color: #374151;
+            font-weight: 500;
         }
+    
         .input-group input {
             width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+            padding: 0.9rem 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 1rem;
+            box-sizing: border-box; /* ✅ Ensures padding doesn't overflow the container */
         }
+    
+        .input-group input:focus {
+            outline: none;
+            border-color: #10b981;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+        }
+    
         .btn {
             width: 100%;
-            padding: 0.8rem;
+            padding: 0.9rem;
             border: none;
-            border-radius: 4px;
-            background: #64d68a;
-            color: #fff;
+            border-radius: 8px;
+            background: #10b981;
+            color: white;
             font-size: 1rem;
+            font-weight: 600;
             cursor: pointer;
-            margin-top: 1rem;
+            transition: background 0.3s ease, transform 0.2s ease;
         }
+    
         .btn:hover {
-            background: #4daf6e;
+            background: #059669;
+            transform: translateY(-2px);
         }
-        .toggle-link {
-            display: block;
-            margin-top: 1rem;
-            color: #64d68a;
-            cursor: pointer;
+    
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body>
-    <div class="container" id="auth-container">
-        <h2 id="form-title">Login</h2>
-        <form id="auth-form">
+    <div class="container">
+        <h2>Your Email</h2>
+        <form id="demo-form">
             <div class="input-group">
                 <label for="email">Email</label>
                 <input type="email" id="email" required>
             </div>
-            <div class="input-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" required>
-            </div>
-            <button type="submit" class="btn">Login</button>
-            <span class="toggle-link" onclick="toggleForm()">Don't have an account? Sign Up</span>
+            <input type="hidden" id="pricing-tier" value="">
+            <button type="submit" class="btn">Book a Demo</button>
         </form>
     </div>
 
     <script>
-        function toggleForm() {
-            const formTitle = document.getElementById("form-title");
-            const submitButton = document.querySelector(".btn");
-            const toggleText = document.querySelector(".toggle-link");
+        document.getElementById("demo-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const email = document.getElementById("email").value;
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbyPxKb5c3Oi8Ntr9YC2gBuVg_CvEv2jvIwbQmE6qC6PuzCrfBqfgpL09M-Hg_qnoQeOlA/exec';
             
-            if (formTitle.innerText === "Login") {
-                formTitle.innerText = "Sign Up";
-                submitButton.innerText = "Sign Up";
-                toggleText.innerText = "Already have an account? Login";
-            } else {
-                formTitle.innerText = "Login";
-                submitButton.innerText = "Login";
-                toggleText.innerText = "Don't have an account? Sign Up";
-            }
-        }
+            fetch(scriptURL, {
+                method: 'POST',
+                body: new URLSearchParams({"email": email})
+            })
+            .then(response => alert("Thank you! Your request has been submitted."))
+            .catch(error => console.error("Error!", error.message));
+        });
     </script>
 </body>
 </html>
